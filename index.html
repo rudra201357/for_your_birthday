@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --theme:#ff5d8f; /* ← change theme color */
+      --accent:#ffd166;
+      --bg:#fff7fb;
+      --text:#2a2a2a;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: radial-gradient(1200px 600px at top right, #ffe8f1, transparent 70%),
+      radial-gradient(800px 500px at left, #fff2d6, transparent 70%), var(--bg);
+      color:var(--text); font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; overflow-x:hidden;
+    }
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+    .hero{position:relative; min-height:88vh; display:grid; place-items:center; text-align:center; overflow:hidden}
+    .badge{display:inline-flex; gap:8px; align-items:center; background:#fff; color:#111; padding:6px 12px; border-radius:999px; font-weight:600; box-shadow:0 6px 20px rgba(0,0,0,.06);}
+    .title{font-family:"Great Vibes", cursive; font-size:72px; line-height:1; margin:14px 0; color:var(--theme); text-shadow:0 3px 0 rgba(0,0,0,.06)}
+    .subtitle{font-size:18px; opacity:.8; margin-top:-8px}
+    .cta{margin-top:20px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    button, .btn{cursor:pointer; border:none; padding:12px 18px; border-radius:14px; font-weight:700; transition:.2s transform ease, .2s box-shadow ease; background:var(--theme); color:white; box-shadow:0 10px 20px rgba(255,93,143,.35)}
+    button:hover, .btn:hover{transform:translateY(-2px); box-shadow:0 14px 26px rgba(255,93,143,.45)}
+    .btn-ghost{background:#fff; color:#111; box-shadow:0 6px 18px rgba(0,0,0,.06)}
+
+    /* Floating balloons */
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  width: 60px;
+  aspect-ratio: 3/4;
+  background: var(--theme);
+  border-radius: 44% 44% 44% 44% / 60% 60% 40% 40%;
+  opacity: .9;
+  box-shadow: inset -10px -14px 30px rgba(0,0,0,.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: white; /* text color inside balloon */
+  z-index: 5;
+}
+
+
+/* Knot at the bottom */
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--theme); /* little triangle knot */
+}
+
+/* String attached to knot */
+.balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -88px; /* string length (adjust as needed) */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 80px;
+  background: rgba(0,0,0,.25);
+}
+
+/* Floating animation */
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) translateX(var(--x));
+    opacity: .95;
+  }
+}
+
+/* Balloon pop effect */
+@keyframes pop {
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+.balloon.popped {
+  animation: pop 0.3s forwards;
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  opacity: 0.9;
+  animation: fall  forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+
+    /* Sections */
+    section{padding:72px 0}
+    .section-title{font-size:28px; font-weight:800; margin:0 0 12px}
+    .section-note{opacity:.7; margin-bottom:24px}
+
+  
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* increased min width */
+  gap: 20px; /* more space between cards */
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  width: 350px;
+}
+
+.card img {
+  width: 100%;
+  height: 250px; /* increased height */
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.chip {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: rgba(255,255,255,.9);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+
+    /* Memories timeline */
+    .timeline{border-left:3px dashed var(--theme); padding-left:16px; display:grid; gap:18px}
+    .moment{background:#fff; padding:14px; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.06)}
+    .moment time{font-weight:800; color:var(--theme)}
+
+    /* Wish wall */
+    .wish-wall{display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:14px}
+    .note{background:linear-gradient(120deg, #fff, #fff9fb); border:2px dashed #ffd6e6; padding:12px; border-radius:14px; min-height:120px}
+
+    /* Footer */
+    footer{padding:32px 0 56px; text-align:center; opacity:.75}
+
+    /* Confetti canvas */
+    canvas#confetti{position:fixed; inset:0; pointer-events:none; z-index:20}
+
+    /* Audio pill */
+    .audio-pill{position:fixed; right:16px; bottom:16px; z-index:30; background:#fff; border-radius:999px; padding:8px 12px; display:flex; gap:10px; align-items:center; box-shadow:0 12px 30px rgba(0,0,0,.12)}
+    .audio-pill button{background:var(--theme)}
+
+    /* Reveal message */
+    details{background:#fff; padding:14px; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.06)}
+    details summary{cursor:pointer; font-weight:800; color:var(--theme)}
+
+    /* Small screens */
+    @media (max-width:560px){.title{font-size:52px}}
+    .certificate {
+  text-align: center;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.certificate-box {
+  border: 4px solid gold;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+  background: #fffbe6;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.certificate-box h1 {
+  color: #222;
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+.certificate-box h3 {
+  color: #444;
+  font-size: 1.6rem;
+}
+
+.certificate-box p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.certificate-box .sign {
+  margin-top: 30px;
+  font-style: italic;
+  font-size: 1.2rem;
+}       
+  </style>
+  <style>
+    #content { display: none; }   /* hide page content initially */
+    #countdown { font-size: 2rem; text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+  <div id="countdown"></div>
+  <div id="content">
+  <canvas id="confetti"></canvas>
+  <header class="hero">
+    <div class="container">
+      <div class="badge">The Magical Date: <span id="bday-date"> </span></div>
+      <h1 class="title">Happy Birthday, <span id="friend-name">Bestie</span>! 💕</h1>
+      <p class="subtitle">Another lap around the sun, more memories to make. Let today be extra sparkly ✨</p>
+      <div class="cta">
+        <a class="btn" id="partyBtn">Celebrate 🎉</a>
+        <a class="btn btn-ghost" id="scrollToMemories">Open the Memories 📷</a>
+        <a class="btn btn-ghost" target="_blank" id="playlistLink" href="#">Play the Birthday Mix ▶️</a>
+        <a class="btn btn-ghost" target="_blank"  href="certificate.html">Download Certificate</a>
+        
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container" id="countdownSection">
+      <h2 class="section-title">Countdown to the Big Day</h2>
+      <p class="section-note">Tick-tock! We party in…</p>
+      <div id="countdown" style="display:flex; gap:14px; flex-wrap:wrap"></div>
+    </section>
+
+    <section class="container" id="gallery">
+      <h2 class="section-title">The Moments 🫠</h2>
+      <p class="section-note">A few frames I love the most 💗</p>
+      <div class="gallery" id="galleryGrid">
+        <!-- Drop your images below (replace src) -->
+        <figure class="card"><img src="laugh2.jpg" alt="moment"><figcaption class="chip">Chasmish🤓</figcaption></figure>
+        <figure class="card"><img src="omnamah.jpg" alt="moment"><figcaption class="chip">Om Namah🙏</figcaption></figure>
+        <figure class="card"><img src="laugh1.jpg" alt="moment"><figcaption class="chip">Ayyen?🙄</figcaption></figure>
+        <figure class="card"><img src="candid.jpg" alt="moment"><figcaption class="chip">Candid?☺️</figcaption></figure>
+        <figure class="card"><img src="areeBapre.jpg" alt="moment"><figcaption class="chip">Areee🙈</figcaption></figure>
+        <figure class="card"><img src="class.jpg" alt="moment"><figcaption class="chip">Class Bunk?😉</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="container" id="memories">
+      <h2 class="section-title">Mini Timeline</h2>
+      <p class="section-note">From random texts to core memories 🫶</p>
+      <div class="timeline" id="timeline">
+        <div class="moment"><time>2023</time><div><i>The story began with One notification at a time : <b>"Coming to college?"</b>  <br>
+        She asked for help in C, but from semicolons to full stops they created a never-ending code of memories..... <br>
+        — who knew a simple study room session could turn into something priceless?</i></div></div>
+        <div class="moment"><time>2024</time><div><i>From C code to Life Code : She taught me the most important function call: <b> change_lifestyle(&me);</b><br>
+        We didn't just share moments, we built a shared repository of memories, each <b>commit</b> a new joy, each <b>branch</b> a path we walked together.</i><br>
+      I often throw a <b>Segmentation Fault</b> of anger, but she's the perfect <b>exception handler</b>, gracefully catching my errors and preventing a system crash.</div></div>
+        <div class="moment"><time>2025</time><div>* She creates memories that can never be expressed <b>in words.</b></div></div>
+      </div>
+      <div style="margin-top:12px"><details>
+        <summary>Click to reveal a secret birthday message 💌</summary>
+        <img src="image.png" alt="">
+        <pre id="secretMsg" style="margin:8px 0 0">        হয়তো আমি কবিতা লিখতে জানিনা....<br>
+ But believe me the emotions instead of these lines are priceless.</pre>
+      </details></div>
+    </section>
+
+    <section class="container" id="wishwall">
+      <h2 class="section-title">Wish Wall</h2>
+      <p class="section-note">Leave a note! </p>
+      <form id="wishForm" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px">
+        <input id="wishInput" placeholder="Type your wish…" style="flex:1; padding:12px 14px; border-radius:12px; border:2px solid #ffd6e6; outline:none" />
+        <button type="submit">Add Note</button>
+        <button type="button" id="clearNotes" class="btn-ghost">Clear</button>
+      </form>
+      <div class="wish-wall" id="wishWall"></div>
+    </section>
+  </main>
+
+  <footer>
+   <p> Made with 💗 by <span id="madeBy">you</span></p>
+   <p>(This is a small effort form me. Here I share only 0.001% love and care.) </p>
+   <p style="color: palevioletred;"><i>Design may not be perfect today, but the reason is even more special—it’s my designer’s birthday! </i> 🥳</p>
+
+  </footer>
+
+  <!-- Background music (replace src with your mp3 in the same folder) -->
+  <audio id="bgm" preload="auto" src="birthday.mp3" loop></audio>
+  <div class="audio-pill"><span id="trackName">Birthday Song</span> <button id="toggleAudio">Play Music</button></div>
+</div>
+  <script>
+  function getTargetDateForNextBirthday(birthdayStr) {
+    const [yearStr, monthStr, dayStr] = birthdayStr.split('-');
+    const month = Number(monthStr) - 1;
+    const day = Number(dayStr);
+    const now = new Date();
+
+    // target at local midnight (00:00:00) of this year
+    let target = new Date(now.getFullYear(), month, day, 0, 0, 0, 0);
+
+    // if we already passed today, move to next year
+    if (now.getTime() >= target.getTime() + 24 * 60 * 60 * 1000) {
+      target = new Date(now.getFullYear() + 1, month, day, 0, 0, 0, 0);
+    }
+    return target;
+  }
+
+  // Example: use birthday or fixed date/time
+  // const targetDate = getTargetDateForNextBirthday("2025-09-10");
+  const targetDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 18, 38, 30, 0);
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate.getTime() - now.getTime();
+
+    // ✅ If it's the same date (today), show content immediately
+    const isSameDay =
+      now.getFullYear() === targetDate.getFullYear() &&
+      now.getMonth() === targetDate.getMonth() &&
+      now.getDate() === targetDate.getDate();
+
+    if (diff <= 0 || isSameDay) {
+      document.getElementById("countdown").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("countdown").textContent =
+      `${days}d ${hours}h ${minutes}m ${seconds}s left`;
+  }
+
+  window.onload = function () {
+    updateCountdown();
+    timer = setInterval(updateCountdown, 1000);
+  };
+</script>
+
+  <script>
+    // ======== CONFIG — EDIT THESE ========
+    const CONFIG = {
+      friendName: "Muchi", // ← her name
+      birthday: "2025-09-10", // YYYY-MM-DD
+      playlist: "https://open.spotify.com/playlist/1WTJHQnwews8yoQ1nJQ4XH", // your playlist URL
+      theme: "#ff5d8f", // theme color
+      madeBy: "Rudiii"
+      // secret: "You make ordinary days feel like celebrations. I’m grateful for you. ✨"
+    };
+    // ====================================
+
+    // Apply config
+    document.documentElement.style.setProperty('--theme', CONFIG.theme);
+    document.getElementById('friend-name').textContent = CONFIG.friendName;
+    document.getElementById('bday-date').textContent = new Date(CONFIG.birthday).toLocaleDateString(undefined, {day:'2-digit', month:'long'});
+    document.getElementById('playlistLink').href = CONFIG.playlist;
+    document.getElementById('madeBy').textContent = CONFIG.madeBy;
+    // document.getElementById('secretMsg').textContent = CONFIG.secret;
+
+    // Smooth scroll
+    document.getElementById('scrollToMemories').addEventListener('click', () => {
+      document.querySelector('#gallery').scrollIntoView({behavior:'smooth'});
+    });
+
+    // // Countdown — fixed timezone-aware parsing
+    // function getTargetDateForNextBirthday(birthdayStr){
+    //   // birthdayStr expected in YYYY-MM-DD
+    //   const [yearStr, monthStr, dayStr] = birthdayStr.split('-');
+    //   const month = Number(monthStr) - 1;
+    //   const day = Number(dayStr);
+    //   const now = new Date();
+    //   // create target at local midnight of this year
+    //   let target = new Date(now.getFullYear(), month, day, 0, 0, 0, 0);
+    //   // if already passed today, move to next year
+    //   if (now > target) {
+    //     target = new Date(now.getFullYear() + 1, month, day, 0, 0, 0, 0);
+    //   }
+    //   return target;
+    // }
+
+    // function renderCountdown(){
+    //   const el = document.getElementById('countdown');
+    //   el.innerHTML = '';
+    //   const now = new Date();
+    //   const target = getTargetDateForNextBirthday(CONFIG.birthday);
+    //   const diff = target - now;
+    //   if (diff <= 0) {
+    //     el.innerHTML = '<strong>It\'s party time! 🎉</strong>';
+    //     fireConfetti(220);
+    //     return;
+    //   }
+    //   const d = Math.floor(diff/86400000);
+    //   const h = Math.floor((diff%86400000)/3600000);
+    //   const m = Math.floor((diff%3600000)/60000);
+    //   const s = Math.floor((diff%60000)/1000);
+    //   const unit = (n, label) => `<div style="background:#fff; padding:14px 18px; border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.08); min-width:90px; text-align:center"><div style=\"font-size:28px; font-weight:800; color:var(--theme)\">${n}</div><div style=\"opacity:.7\">${label}</div></div>`;
+    //   el.insertAdjacentHTML('beforeend', unit(d,'Days')+unit(h,'Hours')+unit(m,'Minutes')+unit(s,'Seconds'));
+    // }
+    // renderCountdown();
+    // setInterval(renderCountdown, 1000);
+
+    // Wish wall (localStorage)
+    const wall = document.getElementById('wishWall');
+    const KEY = 'birthday-wishes-v1';
+    const wishes = JSON.parse(localStorage.getItem(KEY) || '[]');
+    function drawWishes(){
+      wall.innerHTML = '';
+      wishes.forEach((w,i)=>{
+        const div = document.createElement('div');
+        div.className='note';
+        div.innerHTML = w;
+        wall.appendChild(div);
+      })
+    }
+    drawWishes();
+    document.getElementById('wishForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const v = document.getElementById('wishInput').value.trim();
+      if(!v) return;
+      wishes.unshift(v);
+      localStorage.setItem(KEY, JSON.stringify(wishes));
+      document.getElementById('wishInput').value='';
+      drawWishes();
+      fireConfetti(80);
+    });
+    document.getElementById('clearNotes').addEventListener('click', ()=>{
+      if(confirm('Clear all local wishes?')){
+        localStorage.removeItem(KEY);
+        wishes.length=0; drawWishes();
+      }
+    });
+
+    // Confetti (tiny, no deps)
+    const confettiCanvas = document.getElementById('confetti');
+    const ctx = confettiCanvas.getContext('2d');
+    let confettiPieces = [];
+    function resize(){ confettiCanvas.width = innerWidth; confettiCanvas.height = innerHeight; }
+    addEventListener('resize', resize); resize();
+    function fireConfetti(amount=160){
+      for(let i=0;i<amount;i++){
+        confettiPieces.push({
+          x: Math.random()*innerWidth,
+          y: -20,
+          s: 4+Math.random()*6,
+          v: 2+Math.random()*4,
+          a: Math.random()*Math.PI,
+          r: Math.random()*Math.PI*2,
+        });
+      }
+    }
+    function tick(){
+      ctx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+      confettiPieces.forEach(p=>{
+        p.y += p.v; p.x += Math.sin(p.a+=0.02)*1.5; p.r += 0.05;
+        ctx.save();
+        ctx.translate(p.x,p.y); ctx.rotate(p.r);
+        ctx.fillStyle = `hsl(${(p.r*60)%360} 90% 60%)`;
+        ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s);
+        ctx.restore();
+      });
+      confettiPieces = confettiPieces.filter(p=>p.y < innerHeight+20);
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    // Balloons
+    function spawnBalloons(){
+      const hero = document.querySelector('.hero');
+      for(let i=0;i<9;i++){
+        const b = document.createElement('div');
+        b.className='balloon';
+        b.style.left = Math.random()*100+'%';
+        b.style.background = `hsl(${Math.random()*360} 90% 65%)`;
+        b.style.animation = `floatUp ${12+Math.random()*10}s linear ${Math.random()*4}s forwards`;
+        b.style.setProperty('--x', (Math.random()*120-60)+'px');
+     
+ b.addEventListener('click', () => {
+  b.classList.add('popped');
+
+  const heroRect = hero.getBoundingClientRect();
+  const bRect = b.getBoundingClientRect();
+  const x = bRect.left - heroRect.left + bRect.width / 2;
+  const y = bRect.top - heroRect.top + bRect.height / 2;
+
+  // 🎉 spawn confetti with random velocity
+  for (let j = 0; j < 25; j++) {
+    const conf = document.createElement('div');
+    conf.className = 'confetti';
+    conf.style.left = x + 'px';
+    conf.style.top = y + 'px';
+    conf.style.background = `hsl(${Math.random() * 360}, 90%, 60%)`;
+
+    hero.appendChild(conf);
+
+    // random trajectory
+    const angle = Math.random() * Math.PI * 2; // 0–360°
+    const distance = 50 + Math.random() * 80; // scatter distance
+    const dx = Math.cos(angle) * distance;
+    const dy = Math.sin(angle) * distance + 80; // always falls down
+
+    conf.animate([
+      { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+      { transform: `translate(${dx}px, ${dy}px) rotate(${Math.random()*720}deg)`, opacity: 0 }
+    ], {
+      duration: 1000 + Math.random()*500,
+      easing: 'ease-out',
+      fill: 'forwards'
+    });
+
+    setTimeout(() => conf.remove(), 1600);
+  }
+
+  // remove balloon after pop
+  setTimeout(() => b.remove(),10);
+});
+        hero.appendChild(b);
+  
+        setTimeout(()=>b.remove(), 17000);
+      }
+    }
+
+    setInterval(spawnBalloons, 3000); spawnBalloons();
+
+    // Party button
+    document.getElementById('partyBtn').addEventListener('click', ()=>{
+      fireConfetti(240);
+      spawnBalloons();
+      pulse(document.querySelector('.title'));
+    });
+    function pulse(el){
+      el.animate([
+        {transform:'scale(1)'},
+        {transform:'scale(1.05)'},
+        {transform:'scale(1)'}
+      ], {duration:600, easing:'cubic-bezier(.2,.7,.2,1)'});
+    }
+
+    // Audio controls
+    const audio = document.getElementById('bgm');
+    const toggleBtn = document.getElementById('toggleAudio');
+    toggleBtn.addEventListener('click', async ()=>{
+      if(audio.paused){
+        try{ await audio.play(); toggleBtn.textContent='Pause Music'; fireConfetti(60);}catch(e){alert('Autoplay blocked. Tap again to play.');}
+      }else{ audio.pause(); toggleBtn.textContent='Play Music'; }
+    });
+
+
+    
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Best Friendship Certificate</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+     @media print {
+      .no-print {
+        display: none !important;
+      }
+    }
+    /* Applying custom fonts via a style tag */
+    body {
+      font-family: 'Merriweather', serif;
+    }
+    .font-handwriting {
+      font-family: 'Great Vibes', cursive;
+    }
+    img{
+      
+        width: 250px;
+    }
+  
+  </style>
+  <style>
+  /* Style only this div */
+  #circle-images {
+    display: flex;              /* side by side */
+    gap: 20px;                  /* space between images */
+    justify-content: center;    /* center horizontally */
+    align-items: center;        /* vertical alignment */
+    margin-top: 20px;
+  }
+
+  #circle-images img {
+    width: 150px;               /* image size */
+    height: 150px;
+    object-fit: cover;          /* fit inside circle */
+    border-radius: 50%;         /* make circular */
+    border: 3px solid #f59e0b; /* optional border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* optional shadow */
+    transition: transform 0.3s;
+  }
+
+  #circle-images img:hover {
+    transform: scale(1.1);      /* hover zoom effect */
+  }
+  #muchi{
+   margin-left: 50px;
+  }
+</style>
+</head>
+<body class="bg-rose-50 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 md:p-8">
+
+  <div id="cert-box" class="bg-white p-6 sm:p-10 md:p-12 rounded-2xl shadow-2xl max-w-4xl w-full border-8 border-double border-amber-400 relative overflow-hidden">
+    
+    <svg class="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 w-24 h-24 text-amber-500 opacity-80" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L14.47 8.53L21.5 9.22L16.5 13.6L18.09 20.27L12 16.5L5.91 20.27L7.5 13.6L2.5 9.22L9.53 8.53L12 2Z" stroke="white" stroke-width="0.5"/>
+        <path d="M12 4.5L13.53 8.79L18.24 9.22L14.62 12.4L15.76 16.95L12 14.5L8.24 16.95L9.38 12.4L5.76 9.22L10.47 8.79L12 4.5Z"/>
+    </svg>
+
+    <div class="text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-600 tracking-widest uppercase">Certificate of Best Friendship</h2>
+      <p class="text-base sm:text-lg text-gray-500 mt-4">This certificate is proudly presented to</p>
+      
+      <h1 class="font-handwriting text-6xl sm:text-7xl md:text-8xl text-amber-600 my-4">
+        Suchismita
+      </h1>
+      
+      <p class="text-lg sm:text-xl text-gray-700 italic">For being the most amazing best friend ever! 🎉</p>
+    </div>
+
+    <div id="circle-images" >
+         
+      <img src="rudii.jpg">
+     <img src="suchi.jpg">
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-around items-center mt-12 w-full gap-8 sm:gap-0">
+      <div class="flex flex-col items-center">
+        <img  id="muchi" src="s.png">
+        <p class="text-sm font-bold tracking-wider text-gray-600  mt-2">Muchi</p>
+      </div>
+      <div class="flex flex-col items-center">
+       <img  src="r.png">
+        <p class="text-sm font-bold tracking-wider text-gray-600 mt-2">Rudiiii</p>
+      </div>
+    </div>
+  </div>
+<br>
+  <button onclick="window.print()" class="no-print  px-8 py-3 text-lg font-semibold text-white bg-amber-500 rounded-full shadow-lg hover:bg-amber-600 focus:outline-none focus:ring-4 focus:ring-amber-300 transform hover:-translate-y-1 transition-all duration-300">
+    Download Certificate 📜
+  </button>
+
+
+</body>
+</html>
